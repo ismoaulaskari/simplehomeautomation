@@ -8,7 +8,10 @@
     <version>0.0.1</version>
     <name>Simple Home Automation</name>
     <description>File-based home controller that doesn't break on system upgrades, customizable via home-grown scripts</description>
-
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.apache.camel</groupId>
