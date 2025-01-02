@@ -8,7 +8,9 @@ import org.apache.camel.impl.DefaultCamelContext;
 
 public class RoutesApp {
     public static void main(String[] args) throws Exception {
-
+        final String varsBaseDir = "/var/local/simplehomeautomation";
+        final String outputDir = varsBaseDir + "/out";
+        final String inputDir = varsBaseDir + "/input";
         boolean atHome;
         boolean homeLocked;
         boolean dayLight;
