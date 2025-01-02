@@ -27,8 +27,8 @@ public class RoutesApp {
                 from("quartz://RealTime?cron=0+*+*+*+*+?").process(new CheckStateProcesor());
 
                 // Define a simple route
-                from("jetty:http://0.0.0.0:8080/hello")
-                        .setBody(constant("Hello World from Apache Camel!"));
+                //from("http://0.0.0.0:8080/hello")
+                //      .setBody(constant("Hello World from Apache Camel!"));
 
                 //write status page
 
