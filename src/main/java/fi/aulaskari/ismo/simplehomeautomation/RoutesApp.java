@@ -11,6 +11,7 @@ public class RoutesApp {
         boolean atHome;
         boolean homeLocked;
         boolean dayLight;
+        boolean movementOutside;
         boolean alert;
 
         // Create a Camel context
