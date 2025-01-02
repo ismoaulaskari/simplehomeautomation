@@ -1,6 +1,6 @@
 package fi.aulaskari.ismo.simplehomeautomation;
 
-import fi.aulaskari.ismo.simplehomeautomation.service.CheckStateProcesor;
+import fi.aulaskari.ismo.simplehomeautomation.service.CheckStateProcessor;
 import fi.aulaskari.ismo.simplehomeautomation.service.InputFileProcessor;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
@@ -24,7 +24,7 @@ public class RoutesApp {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("quartz://RealTime?cron=0+*+*+*+*+?").process(new CheckStateProcesor());
+                from("quartz://RealTime?cron=0+*+*+*+*+?").process(new CheckStateProcessor());
 
                 // Define a simple route
                 //from("http://0.0.0.0:8080/hello")
