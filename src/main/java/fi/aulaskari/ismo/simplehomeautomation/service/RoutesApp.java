@@ -1,12 +1,10 @@
 package fi.aulaskari.ismo.simplehomeautomation.service;
 
-import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.impl.DefaultCamelContext;
 
 public class RoutesApp extends RouteBuilder {
 
-    final String varsBaseDir = "/var/local/simplehomeautomation";
+    final String varsBaseDir = "/tmp/simplehomeautomation";
     final String outputDir = varsBaseDir + "/out";
     final String inputDir = varsBaseDir + "/input";
     boolean atHome;
@@ -16,7 +14,7 @@ public class RoutesApp extends RouteBuilder {
     boolean alert;
 
     public void configure() throws Exception {
-        from("quartz://RealTime?cron=0+*+*+*+*+?").log("testing").process(new CheckStateProcessor()).end();
+        from("quartz://RealTime?cron=0+*+*+*+*+?").log("testing ${date:now:yyyyMMdd}").process(new CheckStateProcessor()).end();
 
         // Define a simple route
         //from("http://0.0.0.0:8080/hello")
