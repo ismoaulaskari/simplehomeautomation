@@ -15,9 +15,8 @@ public class RoutesApp extends RouteBuilder {
     boolean movementOutside;
     boolean alert;
 
-
     public void configure() throws Exception {
-        from("quartz://RealTime?cron=0+*+*+*+*+?").process(new CheckStateProcessor()).end();
+        from("quartz://RealTime?cron=0+*+*+*+*+?").log("testing").process(new CheckStateProcessor()).end();
 
         // Define a simple route
         //from("http://0.0.0.0:8080/hello")
