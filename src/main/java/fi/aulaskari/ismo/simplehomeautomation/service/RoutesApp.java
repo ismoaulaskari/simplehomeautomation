@@ -17,7 +17,7 @@ public class RoutesApp extends RouteBuilder {
 
 
     public void configure() throws Exception {
-        from("quartz://RealTime?cron=0+*+*+*+*+?").process(new CheckStateProcessor());
+        from("quartz://RealTime?cron=0+*+*+*+*+?").process(new CheckStateProcessor()).end();
 
         // Define a simple route
         //from("http://0.0.0.0:8080/hello")
@@ -28,6 +28,6 @@ public class RoutesApp extends RouteBuilder {
         //write camera page/show alert
 
         //react to files
-        from("file:///var/local/simplehomeautomation").process(new InputFileProcessor());
+        from("file:///tmp/simplehomeautomation").process(new InputFileProcessor()).end();
     }
 }
