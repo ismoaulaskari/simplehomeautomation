@@ -8,6 +8,6 @@ public class InputFileProcessor implements org.apache.camel.Processor {
     private static final Logger logger = LoggerFactory.getLogger(InputFileProcessor.class);
 
     public void process(Exchange exchange) throws Exception {
-        logger.info("Reading " + exchange.getIn().getHeader("CamelFileName"));
+        logger.info("Reading " + exchange.getIn().getHeader("CamelFileName") + " from " + exchange.getIn().getHeader("CamelFileParent"));
     }
 }
