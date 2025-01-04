@@ -14,9 +14,23 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
+        //athome, homelocked, daylight
+
+        Fact alarm = conf.getAlarm();
+        if (alarm.needsHandling()) {
+//do sth with producertemplate ?
+        }
+
         Fact alert = conf.getAlert();
         if (alert.needsHandling()) {
-
+//do sth with producertemplate ?
         }
+
+        Fact movementOutside = conf.getMovementOutside();
+        if (movementOutside.needsHandling()) {
+
+//do sth with producertemplate ?
+        }
+
     }
 }

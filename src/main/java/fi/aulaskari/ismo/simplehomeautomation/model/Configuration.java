@@ -9,6 +9,15 @@ public class Configuration {
     Fact dayLight;
     Fact movementOutside;
     Fact alert;
+    Fact alarm;
+
+    public Fact getAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(Fact alarm) {
+        this.alarm = alarm;
+    }
 
     public String getVarsBaseDir() {
         return varsBaseDir;
