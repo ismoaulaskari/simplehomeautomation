@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fi.aulaskari.ismo</groupId>
     <artifactId>simplehomeautomation</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <name>Simple Home Automation</name>
     <description>File-based home controller that doesn't break on system upgrades, customizable via home-grown scripts</description>
     <properties>
