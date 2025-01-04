@@ -5,12 +5,17 @@ public class Configuration {
     final String varsBaseDir = "/tmp/simplehomeautomation";
     final String outputDir = varsBaseDir + "/out";
     final String inputDir = varsBaseDir + "/input";
+    final Site site = new Site();
     Fact atHome;
     Fact homeLocked;
     Fact dayLight;
     Fact movementOutside;
     Fact alert;
     Fact alarm;
+
+    public Site getSite() {
+        return site;
+    }
 
     public String getRestBaseUrl() {
         return restBaseUrl;

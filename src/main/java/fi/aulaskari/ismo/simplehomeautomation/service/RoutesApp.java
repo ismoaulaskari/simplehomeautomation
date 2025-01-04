@@ -9,7 +9,7 @@ public class RoutesApp extends RouteBuilder {
     Configuration configuration = new Configuration();
     CheckStateProcessor checkStateProcessor = new CheckStateProcessor(configuration);
     InputFileProcessor inputFileProcessor = new InputFileProcessor();
-    RestInputProcessor restInputProcessor = new RestInputProcessor();
+    RestInputProcessor restInputProcessor = new RestInputProcessor(configuration);
 
     public void configure() throws Exception {
         restConfiguration().component("jetty").host("localhost").port("8080").bindingMode(RestBindingMode.json);
