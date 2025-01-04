@@ -26,6 +26,10 @@ public class Fact {
         this.endDate = endDate;
     }
 
+    public boolean expired() {
+        return (this.endDate != null && this.getEndDate().before(new Date()));
+    }
+
     public boolean needsHandling() {
         return (this.isActive() && this.getEndDate() != null && this.getEndDate().after(new Date()) && this.getForwarded() == null);
     }

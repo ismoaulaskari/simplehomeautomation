@@ -3,13 +3,13 @@ package fi.aulaskari.ismo.simplehomeautomation.model;
 import java.util.HashMap;
 
 public class Site {
-    private final HashMap<String, String> sensors = new HashMap<>();
+    private final HashMap<String, Fact> sensors = new HashMap<>();
 
-    public String getSensor(String sensor) {
+    public Fact getSensor(String sensor) {
         return this.sensors.get(sensor);
     }
 
-    public void setSensor(String sensor, String value) {
+    public void setSensor(String sensor, Fact value) {
         this.sensors.put(sensor, value);
     }
 }

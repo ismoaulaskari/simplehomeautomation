@@ -13,6 +13,27 @@ public class Configuration {
     Fact alert;
     Fact alarm;
 
+    public void refreshFacts() {
+        if (atHome != null && atHome.expired()) {
+            atHome = new Fact();
+        }
+        if (homeLocked != null && homeLocked.expired()) {
+            homeLocked = new Fact();
+        }
+        if (dayLight != null && dayLight.expired()) {
+            dayLight = new Fact();
+        }
+        if (movementOutside != null && movementOutside.expired()) {
+            movementOutside = new Fact();
+        }
+        if (alert != null && alert.expired()) {
+            alert = new Fact();
+        }
+        if (alarm != null && alarm.expired()) {
+            alarm = new Fact();
+        }
+    }
+
     public Site getSite() {
         return site;
     }

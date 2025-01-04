@@ -1,6 +1,7 @@
 package fi.aulaskari.ismo.simplehomeautomation.service;
 
 import fi.aulaskari.ismo.simplehomeautomation.model.Configuration;
+import fi.aulaskari.ismo.simplehomeautomation.model.Fact;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.slf4j.Logger;
@@ -23,7 +24,13 @@ public class RestInputProcessor implements Processor {
                 break;
             default:
                 if (configuration.getSite().getSensor(item) != null) {
-                    configuration.getSite().getSensor(item) //create some kind of fact?
+                    //    configuration.getSite().getSensor(item)
+                    //create some kind of fact?
+                    Fact f = configuration.getSite().getSensor(item);
+                    //set new fact?
+                    configuration.getSite().setSensor(item, new Fact(item));
+                    //@TODO how to know if alert etc??
+
                 }
         }
     }

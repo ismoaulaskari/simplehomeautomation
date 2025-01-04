@@ -17,7 +17,7 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         //athome, homelocked, daylight
-
+        conf.refreshFacts(); //drop expired
 
         Fact alarm = conf.getAlarm();
         if (alarm != null && alarm.needsHandling()) {
