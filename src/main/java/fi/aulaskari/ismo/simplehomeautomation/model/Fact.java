@@ -9,6 +9,9 @@ public class Fact {
     Date endDate;
     Date forwarded;
 
+    public Fact() {
+    }
+
     public Fact(String name) {
         this.name = name;
         this.active = true;

@@ -20,13 +20,13 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
 
 
         Fact alarm = conf.getAlarm();
-        if (alarm.needsHandling()) {
+        if (alarm != null && alarm.needsHandling()) {
 //do sth with producertemplate ?
             //siren? Cellphone?
         }
 
         Fact alert = conf.getAlert();
-        if (alert.needsHandling()) {
+        if (alert != null && alert.needsHandling()) {
             if (conf.getHomeLocked().isActive()) {
                 Fact newAlarm = new Fact("alarm");
                 conf.setAlarm(newAlarm);
@@ -38,9 +38,14 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
         }
 
         Fact movementOutside = conf.getMovementOutside();
-        if (movementOutside.needsHandling()) {
-
+        if (movementOutside != null && movementOutside.needsHandling()) {
+            if (conf.getHomeLocked().isActive() || !conf.getAtHome().isActive()) {
+                if (conf.getAlert().needsHandling()) {
 //do sth with producertemplate ?
+                }
+
+            }
+
         }
 
     }
