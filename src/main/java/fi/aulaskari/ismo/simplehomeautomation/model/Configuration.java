@@ -1,6 +1,7 @@
 package fi.aulaskari.ismo.simplehomeautomation.model;
 
 public class Configuration {
+    final String restBaseUrl = "/rest";
     final String varsBaseDir = "/tmp/simplehomeautomation";
     final String outputDir = varsBaseDir + "/out";
     final String inputDir = varsBaseDir + "/input";
@@ -10,6 +11,10 @@ public class Configuration {
     Fact movementOutside;
     Fact alert;
     Fact alarm;
+
+    public String getRestBaseUrl() {
+        return restBaseUrl;
+    }
 
     public Fact getAlarm() {
         return alarm;
