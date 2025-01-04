@@ -23,6 +23,7 @@ public class RestInputProcessor implements Processor {
                 break;
             default:
                 if (configuration.getSite().getSensor(item) != null) {
+                    configuration.getSite().getSensor(item) //create some kind of fact?
                 }
         }
     }
