@@ -1,6 +1,7 @@
 package fi.aulaskari.ismo.simplehomeautomation.service;
 
 import fi.aulaskari.ismo.simplehomeautomation.model.Configuration;
+import fi.aulaskari.ismo.simplehomeautomation.model.Fact;
 import org.apache.camel.Exchange;
 
 public class CheckStateProcessor implements org.apache.camel.Processor {
@@ -13,6 +14,9 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        //if(co)
+        Fact alert = conf.getAlert();
+        if (alert.needsHandling()) {
+
+        }
     }
 }

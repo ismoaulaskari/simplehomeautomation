@@ -4,11 +4,11 @@ public class Configuration {
     final String varsBaseDir = "/tmp/simplehomeautomation";
     final String outputDir = varsBaseDir + "/out";
     final String inputDir = varsBaseDir + "/input";
-    boolean atHome;
-    boolean homeLocked;
-    boolean dayLight;
-    boolean movementOutside;
-    boolean alert;
+    Fact atHome;
+    Fact homeLocked;
+    Fact dayLight;
+    Fact movementOutside;
+    Fact alert;
 
     public String getVarsBaseDir() {
         return varsBaseDir;
@@ -22,43 +22,43 @@ public class Configuration {
         return inputDir;
     }
 
-    public boolean isAtHome() {
+    public Fact getAtHome() {
         return atHome;
     }
 
-    public void setAtHome(boolean atHome) {
+    public void setAtHome(Fact atHome) {
         this.atHome = atHome;
     }
 
-    public boolean isHomeLocked() {
+    public Fact getHomeLocked() {
         return homeLocked;
     }
 
-    public void setHomeLocked(boolean homeLocked) {
+    public void setHomeLocked(Fact homeLocked) {
         this.homeLocked = homeLocked;
     }
 
-    public boolean isDayLight() {
+    public Fact getDayLight() {
         return dayLight;
     }
 
-    public void setDayLight(boolean dayLight) {
+    public void setDayLight(Fact dayLight) {
         this.dayLight = dayLight;
     }
 
-    public boolean isMovementOutside() {
+    public Fact getMovementOutside() {
         return movementOutside;
     }
 
-    public void setMovementOutside(boolean movementOutside) {
+    public void setMovementOutside(Fact movementOutside) {
         this.movementOutside = movementOutside;
     }
 
-    public boolean isAlert() {
+    public Fact getAlert() {
         return alert;
     }
 
-    public void setAlert(boolean alert) {
+    public void setAlert(Fact alert) {
         this.alert = alert;
     }
 }
