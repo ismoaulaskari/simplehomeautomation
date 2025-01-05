@@ -15,7 +15,7 @@ public class Configuration {
 
     //add known sensors here
     public Configuration() {
-        site.setSensor("ALARM", new Fact(FactType.ALARM));
+        site.setSensor("ALARM", new Fact("SOMEALARM", FactType.ALARM, "OPEN"));
     }
 
     public void refreshFacts() {
