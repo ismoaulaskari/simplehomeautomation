@@ -23,16 +23,16 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
 
         Fact alarm = conf.getAlarm();
         if (alarm != null && alarm.needsHandling()) {
-//do sth with producertemplate ?
-            //siren? Cellphone?
+//do sth with producertemplate ? @TODO
+            //siren? Cellphone? @TODO
         }
 
         Fact alert = conf.getAlert();
         if (alert != null && alert.needsHandling()) {
             if (conf.getHomeLocked().isActive()) {
                 createAlert(alert);
-//do sth with producertemplate?
-                //notification to phone?
+//do sth with producertemplate? @TODO
+                //notification to phone? @TODO
                 alert.setForwarded(new Date());
             } else {
 //soft notify?
@@ -43,7 +43,7 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
         if (movementOutside != null && movementOutside.needsHandling()) {
             if (conf.getHomeLocked().isActive() || !conf.getAtHome().isActive()) {
                 if (conf.getAlert().needsHandling()) {
-//do sth with producertemplate ?
+//do sth with producertemplate ? @TODO
                 }
 
             }
@@ -59,7 +59,7 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
                     case WINDOW:
                         createAlert(alert);
                         break;
-                    default: //send notification
+                    default: //@TODO send notification
                 }
                 sensor.setForwarded(new Date());
                 break;
