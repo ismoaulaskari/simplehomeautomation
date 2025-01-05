@@ -32,6 +32,7 @@ public class Configuration {
         if (alarm != null && alarm.expired()) {
             alarm = new Fact();
         }
+
     }
 
     public Site getSite() {

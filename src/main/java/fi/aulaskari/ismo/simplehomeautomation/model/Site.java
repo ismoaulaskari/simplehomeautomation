@@ -12,4 +12,8 @@ public class Site {
     public void setSensor(String sensor, Fact value) {
         this.sensors.put(sensor, value);
     }
+
+    public HashMap<String, Fact> getSensors() {
+        return sensors;
+    }
 }

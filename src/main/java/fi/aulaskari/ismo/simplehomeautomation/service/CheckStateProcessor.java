@@ -17,7 +17,7 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         //athome, homelocked, daylight
-        conf.refreshFacts(); //drop expired
+        conf.refreshFacts(); //drop expired actions, but not sensors?
 
         Fact alarm = conf.getAlarm();
         if (alarm != null && alarm.needsHandling()) {
@@ -46,6 +46,12 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
 
             }
 
+        }
+
+        for (Fact sensor : conf.getSite().getSensors().values()) {
+            if (sensor.needsHandling()) {
+
+            }
         }
 
     }
