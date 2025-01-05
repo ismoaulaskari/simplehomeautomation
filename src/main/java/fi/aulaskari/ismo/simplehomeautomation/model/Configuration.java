@@ -13,6 +13,11 @@ public class Configuration {
     Fact alert;
     Fact alarm;
 
+    //add known sensors here
+    public Configuration() {
+        site.setSensor("ALARM", new Fact(FactType.ALARM));
+    }
+
     public void refreshFacts() {
         if (atHome != null && atHome.expired()) {
             atHome = new Fact();

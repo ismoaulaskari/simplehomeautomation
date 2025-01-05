@@ -3,7 +3,7 @@ package fi.aulaskari.ismo.simplehomeautomation.model;
 import java.util.Date;
 
 public class Fact {
-    String name;
+    FactType name;
     boolean active;
     Date startDate;
     Date endDate;
@@ -12,14 +12,14 @@ public class Fact {
     public Fact() {
     }
 
-    public Fact(String name) {
+    public Fact(FactType name) {
         this.name = name;
         this.active = true;
         this.startDate = new Date();
 
     }
 
-    public Fact(String name, Date endDate) {
+    public Fact(FactType name, Date endDate) {
         this.name = name;
         this.active = true;
         this.startDate = new Date();
@@ -42,11 +42,11 @@ public class Fact {
         this.forwarded = forwarded;
     }
 
-    public String getName() {
+    public FactType getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(FactType name) {
         this.name = name;
     }
 

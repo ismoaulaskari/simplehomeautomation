@@ -2,6 +2,7 @@ package fi.aulaskari.ismo.simplehomeautomation.service;
 
 import fi.aulaskari.ismo.simplehomeautomation.model.Configuration;
 import fi.aulaskari.ismo.simplehomeautomation.model.Fact;
+import fi.aulaskari.ismo.simplehomeautomation.model.FactType;
 import org.apache.camel.Exchange;
 
 import java.util.Date;
@@ -28,9 +29,9 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
         Fact alert = conf.getAlert();
         if (alert != null && alert.needsHandling()) {
             if (conf.getHomeLocked().isActive()) {
-                Fact newAlarm = new Fact("alarm");
+                Fact newAlarm = new Fact(FactType.ALARM);
                 conf.setAlarm(newAlarm);
-//do sth with newAlarmproducertemplate?
+//do sth with producertemplate?
                 //notification to phone?
                 alert.setForwarded(new Date());
             }
@@ -50,7 +51,11 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
 
         for (Fact sensor : conf.getSite().getSensors().values()) {
             if (sensor.needsHandling()) {
+                if (conf.getHomeLocked().isActive() || !conf.getAtHome().isActive()) {
 
+                } else {
+
+                }
             }
         }
 
