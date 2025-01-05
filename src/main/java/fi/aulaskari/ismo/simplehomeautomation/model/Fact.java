@@ -3,27 +3,32 @@ package fi.aulaskari.ismo.simplehomeautomation.model;
 import java.util.Date;
 
 public class Fact {
-    FactType name;
+    String name;
+    FactType type;
     boolean active;
     Date startDate;
     Date endDate;
     Date forwarded;
+    String state;
 
     public Fact() {
     }
 
-    public Fact(FactType name) {
+    public Fact(String name, FactType type, String state) {
         this.name = name;
+        this.type = type;
         this.active = true;
         this.startDate = new Date();
-
+        this.state = state;
     }
 
-    public Fact(FactType name, Date endDate) {
+    public Fact(String name, FactType type, String state, Date endDate) {
         this.name = name;
+        this.type = type;
         this.active = true;
         this.startDate = new Date();
         this.endDate = endDate;
+        this.state = state;
     }
 
     public boolean expired() {
@@ -42,12 +47,28 @@ public class Fact {
         this.forwarded = forwarded;
     }
 
-    public FactType getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(FactType name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public FactType getType() {
+        return type;
+    }
+
+    public void setType(FactType type) {
+        this.type = type;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public boolean isActive() {

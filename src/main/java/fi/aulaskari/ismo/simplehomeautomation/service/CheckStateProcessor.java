@@ -17,6 +17,7 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
+        //@TODO iterative logic., we might find a better way to do this
         //athome, homelocked, daylight
         conf.refreshFacts(); //drop expired actions, but not sensors?
 
@@ -29,13 +30,13 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
         Fact alert = conf.getAlert();
         if (alert != null && alert.needsHandling()) {
             if (conf.getHomeLocked().isActive()) {
-                Fact newAlarm = new Fact(FactType.ALARM);
-                conf.setAlarm(newAlarm);
+                createAlert(alert);
 //do sth with producertemplate?
                 //notification to phone?
                 alert.setForwarded(new Date());
+            } else {
+//soft notify?
             }
-
         }
 
         Fact movementOutside = conf.getMovementOutside();
@@ -51,13 +52,24 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
 
         for (Fact sensor : conf.getSite().getSensors().values()) {
             if (sensor.needsHandling()) {
-                if (conf.getHomeLocked().isActive() || !conf.getAtHome().isActive()) {
-
-                } else {
-
+                switch (sensor.getType()) {
+                    case DOOR:
+                        createAlert(alert);
+                        break;
+                    case WINDOW:
+                        createAlert(alert);
+                        break;
+                    default: //send notification
                 }
+                sensor.setForwarded(new Date());
+                break;
             }
         }
 
+    }
+
+    private void createAlert(Fact alert) {
+        Fact newAlert = new Fact(alert.getName(), FactType.ALERT, alert.getState());
+        conf.setAlert(newAlert);
     }
 }

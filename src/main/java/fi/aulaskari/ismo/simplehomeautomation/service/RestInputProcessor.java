@@ -20,6 +20,7 @@ public class RestInputProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
         logger.info("Rest input " + exchange.getIn().getHeader("CamelHttpUri") + " " + exchange.getIn().getHeader("item") + " " + exchange.getIn().getBody(String.class));
         String item = exchange.getIn().getHeader("item", String.class);
+        String input = exchange.getIn().getBody(String.class);
         switch (item) {
             case "home": //dp stj with special case
                 break;
@@ -29,7 +30,7 @@ public class RestInputProcessor implements Processor {
                     //create some kind of fact?
                     Fact f = configuration.getSite().getSensor(item);
                     //set new fact?
-                    configuration.getSite().setSensor(item, new Fact(FactType.valueOf(item))); //@TODO ned a new object?
+                    configuration.getSite().setSensor(item, new Fact(item, FactType.valueOf(item), input)); //@TODO ned a new object?
                     //@TODO how to know if alert etc?? register for actions?
 
                 }
