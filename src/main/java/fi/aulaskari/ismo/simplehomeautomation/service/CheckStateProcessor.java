@@ -4,10 +4,15 @@ import fi.aulaskari.ismo.simplehomeautomation.model.Configuration;
 import fi.aulaskari.ismo.simplehomeautomation.model.Fact;
 import fi.aulaskari.ismo.simplehomeautomation.model.FactType;
 import org.apache.camel.Exchange;
+import org.apache.camel.Produce;
+import org.apache.camel.ProducerTemplate;
 
 import java.util.Date;
 
 public class CheckStateProcessor implements org.apache.camel.Processor {
+
+    @Produce("seda:simpleha_toweb")
+    ProducerTemplate toWeb;
 
     private final Configuration conf;
 
@@ -66,6 +71,11 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
             }
         }
 
+        //draw status page
+        String page = conf.toString();
+        Exchange toStringExc = exchange.copy();
+        toStringExc.getIn().setBody(page);
+        toWeb.sendBody(toStringExc);
     }
 
     private void createAlert(Fact alert) {

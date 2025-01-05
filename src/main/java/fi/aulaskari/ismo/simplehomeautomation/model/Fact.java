@@ -94,4 +94,17 @@ public class Fact {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+    @Override
+    public String toString() {
+        return "Fact{" +
+                "name='" + name + '\'' +
+                ", type=" + type +
+                ", active=" + active +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", forwarded=" + forwarded +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }

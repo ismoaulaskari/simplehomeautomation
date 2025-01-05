@@ -23,9 +23,10 @@ public class RoutesApp extends RouteBuilder {
         from("file:///tmp/simplehomeautomation").process(inputFileProcessor).end();
 
         //handle actions
-        from("quartz://RealTime?cron=0+*+*+*+*+?").log("testing ${date:now:yyyyMMdd}").process(checkStateProcessor).end();
+        from("quartz://RealTime?cron=0+*+*+*+*+?").log("testing ${date:now:yyyyMMdd_HH:mm:ss}").process(checkStateProcessor).end();
 
         //write status page
+        from("seda:simpleha_toweb").convertBodyTo(String.class).to("file://" + configuration.getOutputDir()).end();
 
         //write camera page/show alert
 

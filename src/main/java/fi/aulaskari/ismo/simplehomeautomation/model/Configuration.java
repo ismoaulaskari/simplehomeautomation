@@ -2,6 +2,7 @@ package fi.aulaskari.ismo.simplehomeautomation.model;
 
 public class Configuration {
     final String restBaseUrl = "rest";
+    final String wwwOutputDir = "/tmp/www";
     final String varsBaseDir = "/tmp/simplehomeautomation";
     final String outputDir = varsBaseDir + "/out";
     final String inputDir = varsBaseDir + "/input";
@@ -106,5 +107,22 @@ public class Configuration {
 
     public void setAlert(Fact alert) {
         this.alert = alert;
+    }
+
+    @Override
+    public String toString() {
+        return "Configuration{" +
+                "restBaseUrl='" + restBaseUrl + '\'' +
+                ", varsBaseDir='" + varsBaseDir + '\'' +
+                ", outputDir='" + outputDir + '\'' +
+                ", inputDir='" + inputDir + '\'' +
+                ", site=" + site +
+                ", atHome=" + atHome +
+                ", homeLocked=" + homeLocked +
+                ", dayLight=" + dayLight +
+                ", movementOutside=" + movementOutside +
+                ", alert=" + alert +
+                ", alarm=" + alarm +
+                '}';
     }
 }

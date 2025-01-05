@@ -16,4 +16,11 @@ public class Site {
     public HashMap<String, Fact> getSensors() {
         return sensors;
     }
+
+    @Override
+    public String toString() {
+        return "Site{" +
+                "sensors=" + sensors +
+                '}';
+    }
 }
