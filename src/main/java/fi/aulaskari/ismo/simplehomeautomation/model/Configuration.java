@@ -41,6 +41,10 @@ public class Configuration {
 
     }
 
+    public String getWwwOutputDir() {
+        return wwwOutputDir;
+    }
+
     public Site getSite() {
         return site;
     }
