@@ -29,7 +29,7 @@ public class RestInputProcessor implements Processor {
                     Fact f = configuration.getSite().getSensor(item);
                     //set new fact?
                     configuration.getSite().setSensor(item, new Fact(item));
-                    //@TODO how to know if alert etc??
+                    //@TODO how to know if alert etc?? register for actions?
 
                 }
         }
