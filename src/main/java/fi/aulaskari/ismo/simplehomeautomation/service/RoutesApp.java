@@ -32,7 +32,7 @@ public class RoutesApp extends RouteBuilder {
         from("quartz://RealTime?cron=0+*+*+*+*+?").log("testing ${date:now:yyyyMMdd_HH:mm:ss}").process(checkStateProcessor).end();
 
         //write status page
-        from("seda:simpleha_toweb").convertBodyTo(String.class).to("file://" + configuration.getWwwOutputDir()).end();
+        from("seda:simpleha_toweb").convertBodyTo(String.class).to("file://" + configuration.getWwwOutputDir() + "?filename=out.txt").end();
 
         //write camera page/show alert
 
