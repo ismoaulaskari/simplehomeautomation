@@ -129,4 +129,21 @@ public class Configuration {
                 ", alarm=" + alarm +
                 '}';
     }
+
+    public String toHtmlStatusPage() {
+        return "<html><body>" +
+                "<p>restBaseUrl='" + restBaseUrl + '\'' +
+                ", varsBaseDir='" + varsBaseDir + '\'' +
+                ", outputDir='" + outputDir + '\'' +
+                ", inputDir='" + inputDir + '\'' + "</p>" +
+                ",<p> site=" + site.toHtmlStatusPage() +
+                "</p><p>, atHome=" + atHome +
+                ", homeLocked=" + homeLocked +
+                ", dayLight=" + dayLight +
+                ", movementOutside=" + movementOutside +
+                ", alert=" + alert +
+                ", alarm=" + alarm +
+                "</p></body></html>";
+    }
+
 }

@@ -23,4 +23,18 @@ public class Site {
                 "sensors=" + sensors +
                 '}';
     }
+
+
+    public String toHtmlStatusPage() {
+        String sensorsHtml = "";
+        for (String sensorKey : sensors.keySet()) {
+            sensorsHtml += "<th>" + sensorKey + "</th>";
+        }
+        sensorsHtml += "</tr><tr>";
+
+        for (String sensorKey : sensors.keySet()) {
+            sensorsHtml += "<td>" + sensors.get(sensorKey).toHtmlStatusPage() + "</td>";
+        }
+        return "<h3>Sensors</h3> <p><table><tr> " + sensorsHtml + " </tr></table></p>\n";
+    }
 }

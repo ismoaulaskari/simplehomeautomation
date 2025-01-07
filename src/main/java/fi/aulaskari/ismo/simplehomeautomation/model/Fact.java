@@ -107,4 +107,12 @@ public class Fact {
                 ", state='" + state + '\'' +
                 '}';
     }
+
+    public String toHtmlStatusPage() {
+        String output = "";
+        if (!this.expired()) {
+            output = name + "(" + type + ")<br/>active=" + active + "<br/>state=" + state + "<br/>forwarded=" + forwarded;
+        }
+        return output;
+    }
 }

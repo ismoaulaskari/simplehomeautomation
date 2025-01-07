@@ -11,11 +11,16 @@ import java.util.Date;
 public class CheckStateProcessor implements org.apache.camel.Processor {
 
     ProducerTemplate toWeb;
+    ProducerTemplate toDebug;
 
     private final Configuration conf;
 
     public CheckStateProcessor(Configuration configuration) {
         this.conf = configuration;
+    }
+
+    public void setToDebug(ProducerTemplate toDebug) {
+        this.toDebug = toDebug;
     }
 
     public void setToWeb(ProducerTemplate toWeb) {
@@ -74,10 +79,16 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
         }
 
         //draw status page
+        String wwwPage = conf.toHtmlStatusPage();
+        Exchange toWebExc = exchange.copy();
+        toWebExc.getIn().setBody(wwwPage);
+        toWeb.send(toWebExc);
+
         String page = conf.toString();
         Exchange toStringExc = exchange.copy();
         toStringExc.getIn().setBody(page);
-        toWeb.send(toStringExc);
+        toDebug.send(toStringExc);
+
     }
 
     private void createAlert(Fact alert) {

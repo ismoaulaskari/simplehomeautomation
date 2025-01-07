@@ -10,11 +10,14 @@ public class RoutesApp extends RouteBuilder {
 
     @Produce("seda:simpleha_toweb")
     ProducerTemplate toWeb;
+    @Produce("seda:simpleha_todebug")
+    ProducerTemplate toDebug;
 
     public void configure() throws Exception {
         Configuration configuration = new Configuration();
         CheckStateProcessor checkStateProcessor = new CheckStateProcessor(configuration);
         checkStateProcessor.setToWeb(toWeb);
+        checkStateProcessor.setToDebug(toDebug);
         InputFileProcessor inputFileProcessor = new InputFileProcessor();
         RestInputProcessor restInputProcessor = new RestInputProcessor(configuration);
 
@@ -32,7 +35,8 @@ public class RoutesApp extends RouteBuilder {
         from("quartz://RealTime?cron=0+*+*+*+*+?").log("testing ${date:now:yyyyMMdd_HH:mm:ss}").process(checkStateProcessor).end();
 
         //write status page
-        from("seda:simpleha_toweb").convertBodyTo(String.class).to("file://" + configuration.getWwwOutputDir() + "?filename=out.txt").end();
+        from("seda:simpleha_toweb").convertBodyTo(String.class).to("file://" + configuration.getWwwOutputDir() + "?filename=out.html").end();
+        from("seda:simpleha_todebug").convertBodyTo(String.class).to("file://" + configuration.getOutputDir() + "?filename=out.txt").end();
 
         //write camera page/show alert
 
