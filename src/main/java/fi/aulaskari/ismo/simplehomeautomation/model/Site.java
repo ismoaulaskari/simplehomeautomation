@@ -33,8 +33,16 @@ public class Site {
         sensorsHtml += "</tr><tr>";
 
         for (String sensorKey : sensors.keySet()) {
-            sensorsHtml += "<td>" + sensors.get(sensorKey).toHtmlStatusPage() + "</td>";
+            String bgcolor = "white";
+            if (!sensors.get(sensorKey).expired()) {
+                bgcolor = "yellow";
+                if (!sensors.get(sensorKey).needsHandling()) {
+                    bgcolor = "red";
+                }
+            }
+
+            sensorsHtml += "<td bgcolor=\"" + bgcolor + "\">" + sensors.get(sensorKey).toHtmlStatusPage() + "</td>";
         }
-        return "<h3>Sensors</h3> <p><table><tr> " + sensorsHtml + " </tr></table></p>\n";
+        return "<h3>Sensors</h3> <p><table border=\"1\"><tr> " + sensorsHtml + " </tr></table></p>\n";
     }
 }

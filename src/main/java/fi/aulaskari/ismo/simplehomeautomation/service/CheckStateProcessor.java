@@ -66,10 +66,10 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
             if (sensor.needsHandling()) {
                 switch (sensor.getType()) {
                     case DOOR:
-                        createAlert(alert);
+                        createAlert(sensor);
                         break;
                     case WINDOW:
-                        createAlert(alert);
+                        createAlert(sensor);
                         break;
                     default: //@TODO send notification
                 }

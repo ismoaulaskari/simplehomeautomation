@@ -1,5 +1,8 @@
 package fi.aulaskari.ismo.simplehomeautomation.model;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Configuration {
     final String restBaseUrl = "rest";
     final String wwwOutputDir = "/home/aulaskar/Downloads/";
@@ -7,8 +10,8 @@ public class Configuration {
     final String outputDir = varsBaseDir + "/out";
     final String inputDir = varsBaseDir + "/input";
     final Site site = new Site();
-    Fact atHome;
-    Fact homeLocked;
+    Fact atHome = new Fact("ATHOME", FactType.YES, "Initial");
+    Fact homeLocked = new Fact("HOMELOCKED", FactType.NO, "Initial");
     Fact dayLight;
     Fact movementOutside;
     Fact alert;
@@ -16,9 +19,12 @@ public class Configuration {
 
     //add known sensors here
     public Configuration() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MINUTE, 1);
+        Date future = cal.getTime();
         site.setSensor("FRONTDOOR", new Fact("FRONTDOOR", FactType.DOOR, "OPEN"));
-        site.setSensor("THRASHCAN", new Fact("TRASHCAN", FactType.MOVEMENT_OUTDOOR, "DETECTED"));
-        site.setSensor("KIDSROOM", new Fact("KIDSROOM", FactType.MOVEMENT, "DETECTED"));
+        site.setSensor("THRASHCAN", new Fact("TRASHCAN", FactType.MOVEMENT_OUTDOOR, "DETECTED", future));
+        site.setSensor("KIDSROOM", new Fact("KIDSROOM", FactType.MOVEMENT, "DETECTED", future));
     }
 
     public void refreshFacts() {
@@ -137,6 +143,7 @@ public class Configuration {
                 "<p>restBaseUrl='" + restBaseUrl + '\'' +
                 ", varsBaseDir='" + varsBaseDir + '\'' +
                 ", outputDir='" + outputDir + '\'' +
+                ", wwwOutputDir='" + wwwOutputDir + '\'' +
                 ", inputDir='" + inputDir + '\'' + "</p>" +
                 ",<p> site=" + site.toHtmlStatusPage() +
                 "</p><p>, atHome=" + atHome +

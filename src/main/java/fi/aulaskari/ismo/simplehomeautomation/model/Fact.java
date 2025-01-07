@@ -3,13 +3,13 @@ package fi.aulaskari.ismo.simplehomeautomation.model;
 import java.util.Date;
 
 public class Fact {
-    String name;
-    FactType type;
-    boolean active;
+    String name; //unique name
+    FactType type; //enum type
+    boolean active; //configurable from ui?
     Date startDate;
-    Date endDate;
-    Date forwarded;
-    String state;
+    Date endDate; //expires on
+    Date forwarded; //escalated by checkstate
+    String state; //text value
 
     public Fact() {
     }
@@ -36,7 +36,7 @@ public class Fact {
     }
 
     public boolean needsHandling() {
-        return (this.isActive() && this.getEndDate() != null && this.getEndDate().after(new Date()) && this.getForwarded() == null);
+        return (this.isActive() && this.endDate == null || (this.getEndDate() != null && this.getEndDate().after(new Date())) && this.getForwarded() == null);
     }
 
     public Date getForwarded() {
@@ -111,9 +111,9 @@ public class Fact {
     public String toHtmlStatusPage() {
         String output = "";
         if (!this.expired()) {
-            output = name + "(" + type + ")<br/>active=" + active + "<br/>state=" + state + "<br/>forwarded=" + forwarded;
+            output = name + "(" + type + ")<br/>active=" + active + "<br/>state=" + state + "<br/>forwarded=" + forwarded + "<br/>endDate=" + endDate;
         } else {
-            output = name + "<i>(" + type + ")<br/>active=" + active + "<br/>state=" + state + "<br/>forwarded=" + forwarded + "</i>";
+            output = name + "<i>(" + type + ")<br/>active=" + active + "<br/>state=" + state + "<br/>forwarded=" + forwarded + "<br/>endDate=" + endDate + "</i>";
         }
         return output;
     }
