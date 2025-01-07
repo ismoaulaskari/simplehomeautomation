@@ -2,11 +2,12 @@ package fi.aulaskari.ismo.simplehomeautomation.service;
 
 import fi.aulaskari.ismo.simplehomeautomation.model.Configuration;
 import fi.aulaskari.ismo.simplehomeautomation.model.Fact;
-import fi.aulaskari.ismo.simplehomeautomation.model.FactType;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Date;
 
 public class RestInputProcessor implements Processor {
     private static final Logger logger = LoggerFactory.getLogger(RestInputProcessor.class);
@@ -28,9 +29,11 @@ public class RestInputProcessor implements Processor {
                 if (configuration.getSite().getSensor(item) != null) {
                     //    configuration.getSite().getSensor(item)
                     //create some kind of fact?
-                    Fact f = configuration.getSite().getSensor(item);
-                    //set new fact?
-                    configuration.getSite().setSensor(item, new Fact(item, FactType.valueOf(item), input)); //@TODO ned a new object?
+                    Fact fact = configuration.getSite().getSensor(item);
+                    fact.setActive(true);
+                    fact.setStartDate(new Date());
+                    fact.setState(input);
+                    fact.setForwarded(null);
                     //@TODO how to know if alert etc?? register for actions?
 
                 }

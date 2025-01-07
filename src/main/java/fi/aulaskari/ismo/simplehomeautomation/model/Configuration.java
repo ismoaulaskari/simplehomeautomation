@@ -25,6 +25,7 @@ public class Configuration {
         site.setSensor("FRONTDOOR", new Fact("FRONTDOOR", FactType.DOOR, "OPEN"));
         site.setSensor("THRASHCAN", new Fact("TRASHCAN", FactType.MOVEMENT_OUTDOOR, "DETECTED", future));
         site.setSensor("KIDSROOM", new Fact("KIDSROOM", FactType.MOVEMENT, "DETECTED", future));
+        site.setSensor("ITEM", new Fact("ITEM", FactType.ALARM, null));
     }
 
     public void refreshFacts() {
