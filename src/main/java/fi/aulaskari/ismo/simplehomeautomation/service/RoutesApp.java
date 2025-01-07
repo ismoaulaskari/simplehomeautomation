@@ -18,7 +18,7 @@ public class RoutesApp extends RouteBuilder {
         CheckStateProcessor checkStateProcessor = new CheckStateProcessor(configuration);
         checkStateProcessor.setToWeb(toWeb);
         checkStateProcessor.setToDebug(toDebug);
-        InputFileProcessor inputFileProcessor = new InputFileProcessor();
+        InputFileProcessor inputFileProcessor = new InputFileProcessor(configuration);
         RestInputProcessor restInputProcessor = new RestInputProcessor(configuration);
 
         restConfiguration().component("jetty").host("localhost").port("8080").bindingMode(RestBindingMode.json);
