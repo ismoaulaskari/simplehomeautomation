@@ -112,6 +112,8 @@ public class Fact {
         String output = "";
         if (!this.expired()) {
             output = name + "(" + type + ")<br/>active=" + active + "<br/>state=" + state + "<br/>forwarded=" + forwarded;
+        } else {
+            output = name + "<i>(" + type + ")<br/>active=" + active + "<br/>state=" + state + "<br/>forwarded=" + forwarded + "</i>";
         }
         return output;
     }
