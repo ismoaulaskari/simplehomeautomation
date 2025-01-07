@@ -2,7 +2,7 @@ package fi.aulaskari.ismo.simplehomeautomation.model;
 
 public class Configuration {
     final String restBaseUrl = "rest";
-    final String wwwOutputDir = "/tmp/www";
+    final String wwwOutputDir = "/home/aulaskar/Downloads/";
     final String varsBaseDir = "/tmp/simplehomeautomation";
     final String outputDir = varsBaseDir + "/out";
     final String inputDir = varsBaseDir + "/input";
@@ -16,7 +16,9 @@ public class Configuration {
 
     //add known sensors here
     public Configuration() {
-        site.setSensor("ALARM", new Fact("SOMEALARM", FactType.ALARM, "OPEN"));
+        site.setSensor("FRONTDOOR", new Fact("FRONTDOOR", FactType.DOOR, "OPEN"));
+        site.setSensor("THRASHCAN", new Fact("TRASHCAN", FactType.MOVEMENT_OUTDOOR, "DETECTED"));
+        site.setSensor("KIDSROOM", new Fact("KIDSROOM", FactType.MOVEMENT, "DETECTED"));
     }
 
     public void refreshFacts() {
