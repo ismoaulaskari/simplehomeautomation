@@ -25,6 +25,7 @@ public class RoutesApp extends RouteBuilder {
 
         //react to rest
         from("rest:put:" + configuration.getRestBaseUrl() + "/items/{item}").process(restInputProcessor).end();
+        from("rest:put:" + configuration.getRestBaseUrl() + "/s/items/{item}").process(restInputProcessor).end();
         //legacy
         from("rest:put:" + configuration.getRestBaseUrl() + "/items/{item}/state").process(restInputProcessor).end();
 

@@ -7,6 +7,7 @@ import org.apache.camel.Processor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class RestInputProcessor implements Processor {
@@ -36,7 +37,12 @@ public class RestInputProcessor implements Processor {
                     fact.setState(input);
                     fact.setForwarded(null);
                     //@TODO how to know if alert etc?? register for actions?
-
+                    if (path.matches("/rest/s/.*")) {
+                        Calendar cal = Calendar.getInstance();
+                        cal.add(Calendar.MINUTE, 1);
+                        Date future = cal.getTime();
+                        fact.setEndDate(future);
+                    }
                 }
         }
     }
