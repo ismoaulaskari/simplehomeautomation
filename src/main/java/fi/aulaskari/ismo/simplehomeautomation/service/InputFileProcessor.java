@@ -36,4 +36,4 @@ public class InputFileProcessor implements org.apache.camel.Processor {
         }
     }
 }
-}
+
