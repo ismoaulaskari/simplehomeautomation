@@ -109,12 +109,13 @@ public class Fact {
     }
 
     public String toHtmlStatusPage(int i) {
-        String output = "<a href=\"#\" onclick=\"showhide('fact" + i + "');\">Params</a>";
+        String output = "";
         if (!this.expired()) {
             output += name + "(" + type + ")<br/>state=" + state + "<div id=\"fact" + i + "\" style=\"display: none;\"><br/>active=" + active + "<br/>forwarded=" + forwarded + "<br/>endDate=" + endDate + "</div>\n";
         } else {
             output += name + "<i>(" + type + ")<br/>state=" + state + "<div id=\"fact" + i + "\" style=\"display: none;\"><br/>active=" + active + "<br/>forwarded=" + forwarded + "<br/>endDate=" + endDate + "</div></i>\n";
         }
+        output += "<br/><a href=\"#\" onclick=\"showhide('fact" + i + "');\">Params</a>";
         return output;
     }
 }
