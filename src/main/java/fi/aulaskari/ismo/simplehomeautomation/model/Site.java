@@ -24,7 +24,6 @@ public class Site {
                 '}';
     }
 
-
     public String toHtmlStatusPage() {
         String sensorsHtml = "";
         for (String sensorKey : sensors.keySet()) {
@@ -32,7 +31,9 @@ public class Site {
         }
         sensorsHtml += "</tr><tr>";
 
+        int i = 0;
         for (String sensorKey : sensors.keySet()) {
+
             String bgcolor = "white";
             if (!sensors.get(sensorKey).expired()) {
                 bgcolor = "yellow";
@@ -41,8 +42,9 @@ public class Site {
                 }
             }
 
-            sensorsHtml += "<td bgcolor=\"" + bgcolor + "\">" + sensors.get(sensorKey).toHtmlStatusPage() + "</td>";
+            sensorsHtml += "<td bgcolor=\"" + bgcolor + "\">" + sensors.get(sensorKey).toHtmlStatusPage(i) + "</td>";
+            i++;
         }
-        return "<h3>Sensors</h3> <p><table border=\"1\"><tr> " + sensorsHtml + " </tr></table></p>\n";
+        return "<table border=\"1\"><tr> " + sensorsHtml + " </tr></table>\n";
     }
 }

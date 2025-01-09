@@ -6,6 +6,8 @@ import fi.aulaskari.ismo.simplehomeautomation.model.FactType;
 import org.apache.camel.Exchange;
 import org.apache.camel.ProducerTemplate;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Date;
 
 public class CheckStateProcessor implements org.apache.camel.Processor {
@@ -79,9 +81,11 @@ public class CheckStateProcessor implements org.apache.camel.Processor {
         }
 
         //draw status page
-        String wwwPage = conf.toHtmlStatusPage();
+        String htmlSnippet = conf.toHtmlStatusPage();
+        String template = Files.readString(Path.of("src/main/resources/templates/trafficlightpage.html"));
+        String htmlPage = template.replace("<!--INSERT_BODY_HERE-->", htmlSnippet);
         Exchange toWebExc = exchange.copy();
-        toWebExc.getIn().setBody(wwwPage);
+        toWebExc.getIn().setBody(htmlPage);
         toWeb.send(toWebExc);
 
         String page = conf.toString();

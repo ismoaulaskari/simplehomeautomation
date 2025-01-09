@@ -140,20 +140,19 @@ public class Configuration {
     }
 
     public String toHtmlStatusPage() {
-        return "<html><body>" +
-                "<p>restBaseUrl='" + restBaseUrl + '\'' +
+        return "<p><a href=\"#\" onclick=\"showhide('conf1');\">Params</a><div id=\"conf1\" style=\"display: none;\">restBaseUrl='" + restBaseUrl + '\'' +
                 ", varsBaseDir='" + varsBaseDir + '\'' +
                 ", outputDir='" + outputDir + '\'' +
                 ", wwwOutputDir='" + wwwOutputDir + '\'' +
-                ", inputDir='" + inputDir + '\'' + "</p>" +
-                ",<p> site=" + site.toHtmlStatusPage() +
+                ", inputDir='" + inputDir + '\'' + "</div></p>" +
+                "<h3>Sensors</h3><p> site=" + site.toHtmlStatusPage() +
                 "</p><p>, atHome=" + atHome +
                 ", homeLocked=" + homeLocked +
                 ", dayLight=" + dayLight +
                 ", movementOutside=" + movementOutside +
                 ", alert=" + alert +
                 ", alarm=" + alarm +
-                "</p></body></html>";
+                "</p>";
     }
 
 }
