@@ -21,7 +21,7 @@ public class RoutesApp extends RouteBuilder {
         InputFileProcessor inputFileProcessor = new InputFileProcessor(configuration);
         RestInputProcessor restInputProcessor = new RestInputProcessor(configuration);
 
-        restConfiguration().component("jetty").host("localhost").port("8080").bindingMode(RestBindingMode.json);
+        restConfiguration().component("jetty").host("localhost").port("8881").bindingMode(RestBindingMode.json);
 
         //react to rest
         from("rest:put:" + configuration.getRestBaseUrl() + "/items/{item}").process(restInputProcessor).end();

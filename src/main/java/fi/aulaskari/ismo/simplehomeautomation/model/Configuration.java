@@ -22,10 +22,14 @@ public class Configuration {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MINUTE, 1);
         Date future = cal.getTime();
-        site.setSensor("FRONTDOOR", new Fact("FRONTDOOR", FactType.DOOR, "OPEN"));
-        site.setSensor("THRASHCAN", new Fact("TRASHCAN", FactType.MOVEMENT_OUTDOOR, "DETECTED", future));
-        site.setSensor("KIDSROOM", new Fact("KIDSROOM", FactType.MOVEMENT, "DETECTED", future));
-        site.setSensor("ITEM", new Fact("ITEM", FactType.ALARM, null));
+        site.setSensor("FRONTDOOR", new Fact("FRONTDOOR", FactType.DOOR, "CLOSED"));
+        site.setSensor("GARAGEDOOR", new Fact("GARAGEDOOR", FactType.DOOR, "CLOSED"));
+        site.setSensor("HALLWAYDOOR", new Fact("HALLWAYDOOR", FactType.DOOR, "CLOSED"));
+        site.setSensor("PORCHDOOR", new Fact("PORCHDOOR", FactType.DOOR, "CLOSED"));
+        site.setSensor("BACKDOOR", new Fact("BACKDOOR", FactType.DOOR, "CLOSED"));
+        //site.setSensor("THRASHCAN", new Fact("TRASHCAN", FactType.MOVEMENT_OUTDOOR, "DETECTED", future));
+        //site.setSensor("KIDSROOM", new Fact("KIDSROOM", FactType.MOVEMENT, "DETECTED", future));
+        //site.setSensor("ITEM", new Fact("ITEM", FactType.ALARM, null));*/
     }
 
     public void refreshFacts() {
