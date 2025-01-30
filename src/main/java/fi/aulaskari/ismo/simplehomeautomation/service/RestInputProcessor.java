@@ -20,10 +20,11 @@ public class RestInputProcessor implements Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        logger.info("Rest input " + exchange.getIn().getHeader("CamelHttpUri") + " " + exchange.getIn().getHeader("item") + " " + exchange.getIn().getBody(String.class));
         String path = exchange.getIn().getHeader("CamelHttpUri", String.class);
         String item = exchange.getIn().getHeader("item", String.class);
-        String input = exchange.getIn().getBody(String.class);
+        String input = String.valueOf(exchange.getIn().getBody());
+        logger.info("Rest input " + exchange.getIn().getHeader("CamelHttpUri") + " " + exchange.getIn().getHeader("item") + " " + exchange.getIn().getBody(String.class));
+
         switch (path) {
             case "/rest/items/home": //dp stj with special case
                 break;
