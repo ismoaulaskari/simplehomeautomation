@@ -22,7 +22,7 @@ public class RestInputProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
         String path = exchange.getIn().getHeader("CamelHttpUri", String.class);
         String item = exchange.getIn().getHeader("item", String.class);
-        String input = String.valueOf(exchange.getIn().getBody());
+        String input = exchange.getIn().getBody(String.class);
         logger.info("Rest input " + exchange.getIn().getHeader("CamelHttpUri") + " " + exchange.getIn().getHeader("item") + " " + exchange.getIn().getBody(String.class));
 
         switch (path) {
